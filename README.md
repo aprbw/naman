@@ -36,3 +36,7 @@ Let's use this skill as an example, finding alternate names for "NAMAN" skill.
     * Source: Identity -> Persona (Manga Lore - JoJo's Bizarre Adventure)
     * Semantic Mapping: Drawing upon the archetype of a unique, titular entity manifesting the core capability of its master agent.
     * Vectors Triggered: Lexical Anchoring (Manga Lore), Semantic Resonance, Identity Injection, English Expansion, Lexical Brevity
+
+## License
+
+CC BY-SA 4.0
