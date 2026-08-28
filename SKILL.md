@@ -1,0 +1,42 @@
+---
+name: naman
+description: NAMAN (Arian's Moniker And Nomenclature) executes a 6-phase cognitive funnel to generate robust, constraint-optimized skill identifiers based on Arian's Master Desiderata.
+author_website: https://www.arianprabowo.com
+---
+
+# NAMAN: Arian's Moniker And Nomenclature
+
+Use this skill to generate high-fidelity names/identifiers for AI skills and tools based on specific design principles.
+
+**Input Handling:** The user's input could be anything—a short phrase or a long document. If the user provides input, you must extract seeds and generate candidates (do not refuse vague input). **However, if the user invokes the skill with absolutely no input or context whatsoever, you must STOP and ask for clarification rather than guessing their intent.**
+**Multiplication Factor (M):** The user may optionally specify a multiplication factor `M` (between 2 and 10, default is 3). If the user requests an `M` > 10, strictly cap it at 10. This factor controls the volume of generation across the funnel.
+
+## ARIAN'S MASTER DESIDERATA
+Please refer to `references/desiderata.md` for the strict hard gates and soft gate saturation scoring system you MUST apply during generation.
+
+## Execution Pipeline (6-Phase Funnel)
+
+### 1. Semantic Seed Extraction
+Extract `M` semantic keywords (state changes, topologies, functions) from the input. Write seeds to the `audit_trail.md` artifact.
+
+### 2. Divergent Semantic Radiation
+Generate `M` divergent synonyms/metaphors per seed (`M^2` total). Append to `audit_trail.md`.
+
+### 3. Generation Matrix (Multi-Turn Expansion)
+Translate the `M^2` concepts into target lexicons, generating `M` variations per concept (`M^3` total strings). Apply palindrome/recursive engineering.
+**CRITICAL:** To avoid token limits, execute iteratively. Generate 50-100 candidates per turn, appending to `audit_trail.md` before taking the next turn. Loop until `M^3` are saved.
+**FORMAT:** The Phase 3 audit trail MUST be a strict 3-level nested bullet list containing exactly `M^3` entries (Level 1: Seed, Level 2: Radiated Concept, Level 3: Generated Variation). If a variation has an English expansion or recursive acronym, it MUST be explicitly shown alongside the generated variation at Level 3.
+
+### 4. Algorithmic Grading & Pruning (Multi-Turn Execution)
+Apply **Hard Gates** to cull, and **Soft Gates** to score the `M^3` candidates.
+**CRITICAL:** Process in batches of 50-100 per turn. Append results to `audit_trail.md` iteratively. Sort survivors by cumulative score.
+**FORMAT:** The Phase 4 audit trail MUST be a markdown table containing exactly `M^3` rows, explicitly evaluating every single candidate against the Hard and Soft Gates. The table must include a column counting from 1 to `M^3` for easy auditing, a column explicitly stating the Phase 1 and 2 "source" for each candidate (format MUST be "Phase 1 Seed -> Phase 2 Radiated Concept", e.g., "Onomastics -> Titular"), and a column for the "Expansion" showing its English/recursive expansion (if applicable). **NO PRUNING OR OMITTING FOR BREVITY IS ALLOWED.** You must list all `M^3` candidates in the table, regardless of how low they score.
+
+### 5. Taxonomic Clustering
+Select the top 10-20 highest-scoring candidates. Enforce taxonomic isolation by clustering the finalists into 3-5 distinct groups based on their typology and archetype (e.g., The Nusantara Cluster, The Manga Lore Cluster, The Palindrome Cluster, The Recursive Acronym Cluster).
+
+### 6. Payload Delivery
+Deliver the final payload directly into the chat in the exact format specified below. Additionally, create a Markdown Artifact (e.g., `audit_trail.md`) that serves as a comprehensive audit trail containing everything at every step of the funnel (all extracted seeds, the full list of ~100 radiated concepts, the massive ~1,000 candidate generation matrix, and the detailed grading/pruning results).
+
+## Output Schema
+Please refer to `references/output_schema.md` for the exact output format (Cognitive Scratchpad and Taxonomic Clusters) you MUST use to deliver the payload.
