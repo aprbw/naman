@@ -16,6 +16,8 @@ Please refer to `references/desiderata.md` for the strict hard gates and soft ga
 
 ## Execution Pipeline (6-Phase Funnel)
 
+**FORMAT NOTE:** Please refer to `references/audit_trail_schema.md` for the strict fixed format you MUST use for the `audit_trail.md` artifact across all phases.
+
 ### 1. Semantic Seed Extraction
 Extract `M` semantic keywords (state changes, topologies, functions) from the input. Write seeds to the `audit_trail.md` artifact.
 
@@ -25,12 +27,10 @@ Generate `M` divergent synonyms/metaphors per seed (`M^2` total). Append to `aud
 ### 3. Generation Matrix (Multi-Turn Expansion)
 Translate the `M^2` concepts into target lexicons, generating `M` variations per concept (`M^3` total strings). Apply palindrome/recursive engineering.
 **CRITICAL:** To avoid token limits, execute iteratively. Generate 50-100 candidates per turn, appending to `audit_trail.md` before taking the next turn. Loop until `M^3` are saved.
-**FORMAT:** The Phase 3 audit trail MUST be a strict 3-level nested bullet list containing exactly `M^3` entries (Level 1: Seed, Level 2: Radiated Concept, Level 3: Generated Variation). If a variation has an English expansion or recursive acronym, it MUST be explicitly shown alongside the generated variation at Level 3.
 
 ### 4. Algorithmic Grading & Pruning (Multi-Turn Execution)
 Apply **Hard Gates** to cull, and **Soft Gates** to score the `M^3` candidates.
 **CRITICAL:** Process in batches of 50-100 per turn. Append results to `audit_trail.md` iteratively. Sort survivors by cumulative score.
-**FORMAT:** The Phase 4 audit trail MUST be a markdown table containing exactly `M^3` rows, explicitly evaluating every single candidate against the Hard and Soft Gates. The table must include a column counting from 1 to `M^3` for easy auditing, a column explicitly stating the Phase 1 and 2 "source" for each candidate (format MUST be "Phase 1 Seed -> Phase 2 Radiated Concept", e.g., "Onomastics -> Titular"), and a column for the "Expansion" showing its English/recursive expansion (if applicable). **NO PRUNING OR OMITTING FOR BREVITY IS ALLOWED.** You must list all `M^3` candidates in the table, regardless of how low they score.
 
 ### 5. Taxonomic Clustering
 Select the top 10-20 highest-scoring candidates. Enforce taxonomic isolation by clustering the finalists into 3-5 distinct groups based on their typology and archetype (e.g., The Nusantara Cluster, The Manga Lore Cluster, The Palindrome Cluster, The Recursive Acronym Cluster).
