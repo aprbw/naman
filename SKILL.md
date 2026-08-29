@@ -26,11 +26,17 @@ Generate `M` divergent synonyms/metaphors per seed (`M^2` total). Append to `aud
 
 ### 3. Generation Matrix (Scale-Out Expansion)
 Translate the `M^2` concepts into target lexicons, generating `M` variations per concept (`M^3` total strings). Apply palindrome/recursive engineering.
-**CRITICAL:** To avoid token limits, you must default to **Parallel Subagent Delegation (Map-Reduce)** if your environment allows it. Spawn multiple background subagents and assign each a slice of the concepts to process concurrently. If subagents are NOT supported by your environment, fallback to multi-turn iterative execution: generate 50-100 candidates per turn, appending to `audit_trail.md` before taking the next turn, looping until all `M^3` are saved.
+**CRITICAL: Scale-Out Strategies to Avoid Token Limits**
+To successfully generate exactly `M^3` candidates without hallucinating or degrading quality, you MUST use one of the following execution strategies in order of preference (depending on your environment capabilities):
+1. **Parallel Subagent Delegation (Map-Reduce)**: Default to this if your environment allows spawning background subagents. Assign each subagent a slice of the concepts to process concurrently.
+2. **Programmatic Orchestration**: If subagents are unavailable but you have code execution capabilities and API access, write a Python script that hits an LLM API in a loop to generate and append the candidates.
+3. **Multi-Turn Iteration (Fallback)**: If neither of the above are possible, execute iteratively in the chat. Generate 50-100 candidates per turn, appending to `audit_trail.md` before taking the next turn, looping until all `M^3` are saved.
+
+**BANNED STRATEGIES:** You are explicitly forbidden from using **Permutation Scripts** (a non-AI approach of mathematically combining prefixes/suffixes without semantic understanding) or **Single-Shot Max-Out** (attempting to output all `M^3` items in a single massive response).
 
 ### 4. Algorithmic Grading & Pruning (Scale-Out Execution)
 Apply **Hard Gates** to cull, and **Soft Gates** to score the `M^3` candidates.
-**CRITICAL:** As with Phase 3, default to **Parallel Subagent Delegation** to score candidates concurrently if supported. If subagents are not supported, fallback to multi-turn execution: process in batches of 50-100 per turn and append results to `audit_trail.md` iteratively. Finally, sort the global survivors by cumulative score.
+**CRITICAL:** As with Phase 3, you must use **Parallel Subagent Delegation**, **Programmatic Orchestration**, or **Multi-Turn Iteration** to score the candidates in batches. Do not attempt a Single-Shot Max-Out. Append results to `audit_trail.md` iteratively. Finally, sort the global survivors by cumulative score.
 
 ### 5. Taxonomic Clustering
 Select the top 10-20 highest-scoring candidates. Enforce taxonomic isolation by clustering the finalists into 3-5 distinct groups based on their typology and archetype (e.g., The Nusantara Cluster, The Manga Lore Cluster, The Palindrome Cluster, The Recursive Acronym Cluster).
